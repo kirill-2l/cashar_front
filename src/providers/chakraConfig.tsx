@@ -1,6 +1,5 @@
 "use client";
 
-import { CacheProvider } from "@chakra-ui/next-js";
 import {
   ChakraProvider,
   ChakraProviderProps,
@@ -8,17 +7,29 @@ import {
   localStorageManager,
 } from "@chakra-ui/react";
 import { NextApiRequest } from "next";
-import { NextApiRequestCookies } from "next/dist/server/api-utils";
 
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
-import { RequestCookies } from "next/dist/compiled/@edge-runtime/cookies";
+
+import "@fontsource/roboto/100.css";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "@fontsource/roboto/900.css";
 
 const config: ThemeConfig = {
   initialColorMode: "system",
   useSystemColorMode: true,
 };
 
-const theme = extendTheme({ config });
+const theme = extendTheme({
+  config,
+
+  fonts: {
+    heading: `'Roboto', sans-serif`,
+    body: `'Roboto', sans-serif`,
+  },
+});
 
 export function ChakraConfig({
   children,
@@ -37,7 +48,6 @@ export function ChakraConfig({
       : localStorageManager;
 
   return (
-    // <CacheProvider>
     <ChakraProvider
       colorModeManager={colorModeManager}
       theme={theme}
@@ -45,7 +55,6 @@ export function ChakraConfig({
     >
       {children}
     </ChakraProvider>
-    // </CacheProvider>
   );
 }
 

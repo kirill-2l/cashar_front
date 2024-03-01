@@ -1,3 +1,5 @@
+import { HomeIntro } from "@/components/homeIntro";
+
 export default function Home() {
-  return <main></main>;
+  return <HomeIntro />;
 }
