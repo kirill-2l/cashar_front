@@ -2,24 +2,18 @@ import { HomeIntro } from "@/components/homeIntro";
 import { Faq } from "@/components/faq";
 import { Box, Heading } from "@chakra-ui/react";
 import { ExchangeRates } from "@/components/exchangeRates";
+import { BaseSection } from "@/components/baseSection";
 
 export default function Home() {
   return (
     <>
       <HomeIntro />
-
-      <Box as="section" my={4}>
-        <Heading as="h2" size="2xl" mb="4">
-          Faq&apos;s
-        </Heading>
+      <BaseSection title="Faq's">
         <Faq />
-      </Box>
-      <Box as="section" my={4}>
-        <Heading as="h2" size="2xl" mb="4">
-          Курсы обмена
-        </Heading>
+      </BaseSection>
+      <BaseSection title="Курсы обмена">
         <ExchangeRates />
-      </Box>
+      </BaseSection>
     </>
   );
 }
