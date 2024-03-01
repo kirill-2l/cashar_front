@@ -10,7 +10,7 @@ import {
 import { Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useState } from "react";
-import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 export function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -35,7 +35,7 @@ export function Navbar() {
   ];
 
   return (
-    <Container maxW="container.xl">
+    <Container maxW="container.2xl">
       <Flex
         top="1rem"
         right="1rem"
@@ -61,7 +61,12 @@ export function Navbar() {
               </Button>
             </Link>
           ))}
-          <Switch color="green" isChecked={isDark} onChange={toggleColorMode} />
+          <IconButton
+            aria-label="Switch dark mode"
+            variant="ghost"
+            icon={isDark ? <MoonIcon /> : <SunIcon />}
+            onClick={toggleColorMode}
+          />
         </Flex>
 
         {/* Mobile */}
