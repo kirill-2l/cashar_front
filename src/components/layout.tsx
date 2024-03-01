@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <Flex direction="column" flex="1">
       <Navbar />
       <main>
-        <Container maxW="container.xl">{children}</Container>
+        <Container maxW="container.lg">{children}</Container>
       </main>
       <Footer />
     </Flex>

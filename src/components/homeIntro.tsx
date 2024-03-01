@@ -1,11 +1,10 @@
 import {
   Box,
   Button,
-  Flex,
   Heading,
   Link,
-  Stack,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 export function HomeIntro() {
@@ -21,7 +20,7 @@ export function HomeIntro() {
           >
             CashAr
           </Text>
-          <Text color="gray.900" fontWeight="400" fontSize="xl">
+          <Text fontWeight="400" fontSize="xl">
             Выгодно и удобно обналичить и поменять USDT, USD, RUB, EUR, Western
             Union, Paypal, Wise и Payoneer.
           </Text>
