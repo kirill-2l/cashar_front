@@ -36,7 +36,7 @@ export function Footer() {
     </Icon>
   );
   return (
-    <Box as="footer" role="contentinfo" mt="auto">
+    <Box as="footer" role="contentinfo" mt={10}>
       <Container size="size.2xl" role="contentinfo">
         <Stack spacing={{ base: "6", md: "8" }} justifyContent="center" py="4">
           <Stack direction="row" align="center" justify="center">

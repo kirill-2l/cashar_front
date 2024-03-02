@@ -10,7 +10,7 @@ export function BaseSection({
   return (
     <Box as="section" my={10}>
       {title && (
-        <Heading as="h2" size="2xl" mb="4">
+        <Heading as="h2" size="2xl" mb={10}>
           {title}
         </Heading>
       )}

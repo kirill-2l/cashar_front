@@ -12,31 +12,34 @@ import { Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { useState } from "react";
 import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { useRouter } from "next/router";
+import { AppRoutes } from "@/kernel/routes";
+
+const menu = [
+  {
+    label: "Банки",
+    href: "banks",
+  },
+  {
+    label: "Дебетовые карты",
+    href: AppRoutes.debitCards,
+  },
+  {
+    label: "Обменники",
+    href: "exchangers",
+  },
+];
 
 export function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const isDark = colorMode === "dark";
   const [isMenuShown, toggleIsMenuShown] = useState(false);
-  const menu = [
-    {
-      label: "Банки",
-      href: "banks",
-      id: "banks",
-    },
-    {
-      label: "Дебетовые карты",
-      href: "cards",
-      id: "debit_card",
-    },
-    {
-      label: "Обменники",
-      href: "exchangers",
-      id: "exchangers",
-    },
-  ];
+  const router = useRouter();
+
+  const isActiveRoute = (href: string) => router.pathname === href;
 
   return (
-    <Box as="header" role="contentinfo">
+    <Box as="header" role="contentinfo" my={6}>
       <Container maxW="container.2xl">
         <Flex
           top="1rem"
@@ -55,10 +58,15 @@ export function Navbar() {
               />
             </Link>
           </Flex>
-          <Flex hideBelow="md" alignItems="center">
+          <Flex hideBelow="md" alignItems="center" gap={2}>
             {menu.map((i) => (
-              <Link key={i.id} href={i.href} as={NextLink}>
-                <Button variant="ghost" aria-label={i.id} my={5} w="100%">
+              <Link key={i.href} href={i.href} as={NextLink}>
+                <Button
+                  isActive={isActiveRoute(i.href)}
+                  variant="ghost"
+                  aria-label={i.label}
+                  w="100%"
+                >
                   {i.label}
                 </Button>
               </Link>
@@ -108,8 +116,8 @@ export function Navbar() {
 
           <Flex flexDir="column" align="center">
             {menu.map((i) => (
-              <Link key={i.id} href={i.href} as={NextLink}>
-                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+              <Link key={i.href} href={i.href} as={NextLink}>
+                <Button variant="ghost" aria-label={i.label} my={5} w="100%">
                   {i.label}
                 </Button>
               </Link>
