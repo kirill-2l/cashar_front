@@ -9,6 +9,7 @@ import {
   NumberInputField,
   NumberInputStepper,
   Select,
+  SimpleGrid,
 } from "@chakra-ui/react";
 
 import { createColumnHelper } from "@tanstack/react-table";
@@ -105,33 +106,39 @@ const exchangeRateData = [
 
 export function ExchangeRates() {
   const [data, setData] = useState<ExchangeRates[]>(exchangeRateData);
-  const [amountOfMoneyForExchange, setAmountOfMoneyForExchange] =
-    useState<number>(0);
+  const [amountOfMoney, setAmountOfMoney] = useState<number>(0);
+  const [currencyGive, setCurrencyGive] = useState<string>("");
+  const [currencyReceive, setCurrencyReceive] = useState<string>("");
 
   const refreshPageData = () => {
     console.log("refresh");
   };
   return (
     <>
-      <Flex>
-        <Select placeholder="Вы отдаете">
+      <SimpleGrid minChildWidth="120px" spacing={5}>
+        <Select
+          placeholder="Вы отдаете"
+          onChange={(e) => setCurrencyGive(e.target.value)}
+        >
           {currenciesGive.map((i) => (
             <option key={i.id} value={i.id}>
               {i.label}
             </option>
           ))}
         </Select>
-        <Select placeholder="Вы получаете">
+        <Select
+          placeholder="Вы получаете"
+          onChange={(e) => setCurrencyReceive(e.target.value)}
+        >
           {currenciesReceive.map((i) => (
             <option key={i.id} value={i.id}>
               {i.label}
             </option>
           ))}
         </Select>
-        {/*placeholder="Сколько меняете"*/}
         <NumberInput
-          onChange={(value) => setAmountOfMoneyForExchange(Number(value))}
-          value={amountOfMoneyForExchange}
+          onChange={(value) => setAmountOfMoney(Number(value))}
+          value={amountOfMoney}
         >
           <NumberInputField />
           <NumberInputStepper>
@@ -140,7 +147,7 @@ export function ExchangeRates() {
           </NumberInputStepper>
         </NumberInput>
         <Button onClick={refreshPageData}>Обновить</Button>
-      </Flex>
+      </SimpleGrid>
       <Box>
         <ExchangeRatesTable data={data} columns={columns} />
       </Box>

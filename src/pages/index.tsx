@@ -1,6 +1,5 @@
 import { HomeIntro } from "@/components/homeIntro";
 import { Faq } from "@/components/faq";
-import { Box, Heading } from "@chakra-ui/react";
 import { ExchangeRates } from "@/components/exchangeRates";
 import { BaseSection } from "@/components/baseSection";
 
